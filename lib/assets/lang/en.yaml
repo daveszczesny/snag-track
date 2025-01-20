@@ -1,1 +1,32 @@
 snag: Issue
+low: Low
+medium: Medium
+high: High
+myProjects: My Projects
+projectName: Project Name
+projectLogo: Project Logo
+uploadImage: Upload Image
+description: Description
+clientName: Client Name
+constractorName: Contractor Name
+projectRef: Project Ref
+signature: Signature
+saveProject: Save Project
+details: Details
+todo: Todo
+inProgress: In Progress
+resolved: Resolved
+unresolved: Unresolved
+view: View
+share: Share
+priority: Priority
+tags: Tags
+tag: Tag
+comment: Comment
+comments: Comments
+createdDate: Created Date
+completedDate: Completed Date
+recent: Recent
+all: All
+completed: Completed
+filter: Filter

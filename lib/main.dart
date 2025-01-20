@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:snag_application_1/l10n/app_localizations.dart';
-import 'package:snag_application_1/models/snag.dart';
 
-void main() {
+import 'package:snag_application_1/l10n/app_localizations.dart';
+
+
+void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -37,15 +41,12 @@ class MyHomePage extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    Snag snag = Snag();
-    snag.setLocalizedName(context);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(snag.name),
+        title: Text("bahh"),
       ),
       body: Center(
-        child: Text(snag.name),
+        child: Text("lagg"),
       ),
     );
   }

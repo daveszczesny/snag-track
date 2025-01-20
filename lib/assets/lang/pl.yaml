@@ -1,0 +1,32 @@
+snag: Problem
+low: Niski
+medium: Średni
+high: Wysoki
+myProjects: Moje Projekty
+projectName: Nazwa Projektu
+projectLogo: Logo Projektu
+uploadImage: Prześlij Obraz
+description: Opis
+clientName: Nazwa Klienta
+constractorName: Nazwa Wykonawcy
+projectRef: Ref Projektu
+signature: Podpis
+saveProject: Zapisz Projekt
+details: Szczegóły
+todo: Do Zrobienia
+inProgress: W Toku
+resolved: Rozwiązany
+unresolved: Nierozwiązany
+view: Przegląd
+share: Udostępnij
+priority: Priorytet
+tags: Tagi
+tag: Tag
+comment: Komentarz
+comments: Komentarze
+createdDate: Data Utworzenia
+completedDate: Data Zakończenia
+recent: Nowe
+all: Wszystkie
+completed: Zakończone
+filter: Filtr

@@ -18,7 +18,7 @@ class AppLocalizations {
   Map<String, String>? _localizedStrings;
 
   Future<bool> load() async {
-    String yamlString = await rootBundle.loadString('assets/lang/${locale.languageCode}.yaml');
+    String yamlString = await rootBundle.loadString('lib/assets/lang/${locale.languageCode}.yaml');
     YamlMap yamlMap = loadYaml(yamlString);
 
     _localizedStrings = yamlMap.map((key, value) => MapEntry(key, value.toString()));
@@ -39,9 +39,11 @@ class AppLocalizations {
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
+  // this contains the list of supported languages
+  // !TODO: Update this list so that it is taken from a general settings file
   @override
   bool isSupported(Locale locale) {
-    return ['en'].contains(locale.languageCode);
+    return ['en', 'pl', 'de'].contains(locale.languageCode);
   }
 
   @override

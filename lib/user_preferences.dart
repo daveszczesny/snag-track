@@ -5,7 +5,7 @@ class UserPreferences {
   Map<String, String>? _preferredTerms;
 
   Future<void> load() async {
-    String jsonString = await rootBundle.loadString('assets/user_preferences.json');
+    String jsonString = await rootBundle.loadString('lib/assets/user_preferences.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _preferredTerms = (jsonMap['preferredTerms'] as Map<String, dynamic>).map<String, String>((key, value) {
