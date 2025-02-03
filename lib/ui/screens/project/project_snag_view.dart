@@ -46,37 +46,18 @@ class _ProjectSnagView extends State<ProjectSnagView> with SingleTickerProviderS
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Project Snags'),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'All'),
-            Tab(text: 'To Do'),
-            Tab(text: 'In Progress'),
-            Tab(text: 'Resolved'),
-            Tab(text: 'Blocked'),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          _buildSnagList('All'),
-          _buildSnagList('To Do'),
-          _buildSnagList('In Progress'),
-          _buildSnagList('Resolved'),
-          _buildSnagList('Blocked'),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSnagList(String status) {
+    Widget _buildSnagList(String status) {
     final snags = _filterSnags(status);
+
+    if (snags.isEmpty) { // snag list is empty
+      if (status == 'All') {
+        return const Center(child: Text('No snags found'));
+      }
+      else{
+        return const Center(child: Text('No snags found for this status'));
+      }
+    }
+
     return ListView.builder(
       itemCount: snags.length,
       itemBuilder: (context, index) {
@@ -88,6 +69,38 @@ class _ProjectSnagView extends State<ProjectSnagView> with SingleTickerProviderS
           onSelected: (isSelected) => _onSnagSelected(snag, isSelected)
         );
       },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          TabBar(
+            controller: _tabController,
+            tabs: const [
+              Tab(text: 'All'),
+              Tab(text: 'To Do'),
+              Tab(text: 'In Progress'),
+              Tab(text: 'Resolved'),
+              Tab(text: 'Blocked'),
+            ],
+          ),
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                _buildSnagList('All'),
+                _buildSnagList('To Do'),
+                _buildSnagList('In Progress'),
+                _buildSnagList('Resolved'),
+                _buildSnagList('Blocked'),
+              ],
+            ),
+          )
+        ],  
+      )
     );
   }
 }

@@ -1,10 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:snag_application_1/models/project.dart';
 import 'package:snag_application_1/models/snag.dart';
-import 'package:snag_application_1/ui/screens/project_view_screen.dart';
-import 'package:snag_application_1/ui/screens/test_screen.dart';
+import 'package:snag_application_1/ui/screens/snag/snag_detail_view.dart';
 
 class SnagCardWidget extends StatefulWidget {
   final Snag snag;
@@ -29,7 +27,7 @@ class _SnagCardWidget extends State<SnagCardWidget> {
       onTap: () {
         Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => TestScreen()),
+        MaterialPageRoute(builder: (context) => SnagDetailView(snag: widget.snag)),
       );
       },
       onLongPress: () {
@@ -54,6 +52,18 @@ class _SnagCardWidget extends State<SnagCardWidget> {
                     fit: BoxFit.cover,
                   )
                   : const Icon(Icons.image, color: Colors.white),
+              ),
+              const SizedBox(width: 16.0),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.snag.name,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ],
+                )
               ),
               const SizedBox(width: 16.0),
               PopupMenuButton<String>(

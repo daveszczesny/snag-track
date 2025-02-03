@@ -73,7 +73,7 @@ class Project extends HiveObject {
     String? dateCreated,
     Status? statusCategory,
     DateTime? lastModified,
-    List<Snag>? snags,
+    this.snags = const [],
     this.logoImage,
     this.signature,
     this.projectRef,

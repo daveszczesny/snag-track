@@ -48,4 +48,5 @@ flutter:
     - lib/assets/user_preferences.json
     - lib/assets/icons/png/project_icon.png
     - lib/assets/icons/png/snag_icon.png
+    - lib/assets/icons/png/details_icon.png
 

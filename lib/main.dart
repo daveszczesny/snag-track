@@ -18,10 +18,9 @@ void main() async{
   Hive.registerAdapter(XFileAdapter());
   Hive.registerAdapter(PriorityAdapter());
   Hive.registerAdapter(StatusAdapter());
-  Hive.registerAdapter(SnagAdapter());
   Hive.registerAdapter(ProjectAdapter());
+  Hive.registerAdapter(SnagAdapter());
 
-  await Hive.openBox<Snag>('snags');
   await Hive.openBox<Project>('projects');
 
   runApp(const MyApp());

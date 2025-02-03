@@ -21,6 +21,14 @@ class LocalProjectRepository implements ProjectRepository {
     return _projectBox.getAt(_projectBox.keyAt(project.key()));
   }
 
+  Project? getProjectById(String id){
+    try {
+      return _projectBox.values.firstWhere((element) => element.id == id);
+    } catch (e) {
+      return null as Project?;
+    }
+  }
+
   @override
   Future<void> updateProject(Project project) async {
     await _projectBox.putAt(_projectBox.keyAt(project.key!), project);

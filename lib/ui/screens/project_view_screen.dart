@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snag_application_1/models/project.dart';
 import 'package:snag_application_1/ui/screens/project/project_detail_view.dart';
 import 'package:snag_application_1/ui/screens/project/project_snag_view.dart';
+import 'package:snag_application_1/ui/screens/snag_create_form_screen.dart';
 
 class ProjectViewScreen extends StatefulWidget {
   final Project project;
@@ -24,6 +25,14 @@ class _ProjectViewScreenState extends State<ProjectViewScreen> {
     super.initState();
     pages = [
       ProjectDetailView(project: widget.project),
+      SnagCreateFormScreen(
+        project: widget.project,
+        onSnagCreated: () {
+          setState(() {
+            _selectedIndex = 2;
+          });
+        }
+      ),
       ProjectSnagView(project: widget.project),
     ];
   }
@@ -41,13 +50,20 @@ class _ProjectViewScreenState extends State<ProjectViewScreen> {
         onDestinationSelected: (index) => setState(() => _selectedIndex = index),
         destinations: [
           NavigationDestination(
-            icon: Icon(
-              _selectedIndex == 0 ? Icons.home_filled : Icons.home_outlined,
+            icon: ImageIcon(
+              const AssetImage('lib/assets/icons/png/details_icon.png'),
+              size: 20,
               ), label: 'Details',
             ),
           NavigationDestination(
             icon: Icon(
-              _selectedIndex == 1 ? Icons.search : Icons.search_outlined,
+              _selectedIndex == 1 ? Icons.add : Icons.add_outlined,
+              ), label: 'Add',
+            ),
+          NavigationDestination(
+            icon: ImageIcon(
+              const AssetImage('lib/assets/icons/png/snag_icon.png'),
+              size: 20,
               ), label: 'Snags',
             ),
         ],
