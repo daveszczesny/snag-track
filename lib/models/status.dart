@@ -79,4 +79,9 @@ class Status {
     name: 'Unresolved',
     description: 'Issue that has not been resolved.',
   );
+
+  static final Status completed = Status(
+    name: 'Completed',
+    description: 'Issue that has been completed.',
+  );
 }

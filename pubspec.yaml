@@ -33,6 +33,19 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: lib/assets/fonts/Roboto-Regular.ttf
+        - asset: lib/assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: lib/assets/fonts/Roboto-SemiBold.ttf
+          weight: 600
+        - asset: lib/assets/fonts/Roboto-Light.ttf
+          weight: 300
   assets:
     - lib/assets/lang/en.yaml
     - lib/assets/user_preferences.json
+    - lib/assets/icons/png/project_icon.png
+    - lib/assets/icons/png/snag_icon.png
+

@@ -2,32 +2,34 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:snag_application_1/models/project.dart';
+import 'package:snag_application_1/models/snag.dart';
 import 'package:snag_application_1/ui/screens/project_view_screen.dart';
+import 'package:snag_application_1/ui/screens/test_screen.dart';
 
-class ProjectCardWidget extends StatefulWidget {
-  final Project project;
+class SnagCardWidget extends StatefulWidget {
+  final Snag snag;
   final bool isSelected;
   final ValueChanged<bool> onSelected;
 
-  const ProjectCardWidget({
+  const SnagCardWidget({
     super.key,
-    required this.project,
+    required this.snag,
     required this.isSelected,
     required this.onSelected,
   });
 
   @override
-  _ProjectCardWidgetState createState() => _ProjectCardWidgetState();
+  _SnagCardWidget createState() => _SnagCardWidget();
 }
 
-class _ProjectCardWidgetState extends State<ProjectCardWidget> {
+class _SnagCardWidget extends State<SnagCardWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ProjectViewScreen(project: widget.project)),
+        MaterialPageRoute(builder: (context) => TestScreen()),
       );
       },
       onLongPress: () {
@@ -44,33 +46,14 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                 width: 50,
                 height: 50,
                 color: Colors.grey,
-                child: widget.project.logoImage != null
+                child: widget.snag.images?[0] != null
                   ? Image.file(
-                    File(widget.project.logoImage!.path),
+                    File(widget.snag.images![0].path),
                     width: 50,
                     height: 50,
                     fit: BoxFit.cover,
                   )
                   : const Icon(Icons.image, color: Colors.white),
-              ),
-              const SizedBox(width: 16.0),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.project.name,
-                      style: Theme.of(context).textTheme.labelLarge,
-                    ),
-                    const SizedBox(height: 8.0),
-                    widget.project.snags.isEmpty
-                      ? const Text('No snags found')
-                      : LinearProgressIndicator(
-                        value: widget.project.totalResolvedSnags / widget.project.totalSnags,
-                      ),
-
-                  ],
-                ),
               ),
               const SizedBox(width: 16.0),
               PopupMenuButton<String>(
@@ -81,23 +64,23 @@ class _ProjectCardWidgetState extends State<ProjectCardWidget> {
                 itemBuilder: (BuildContext context) {
                   return [
                     PopupMenuItem<String>(
-                      value: 'View project',
-                      child: const Text('View project'),
+                      value: 'View snag',
+                      child: const Text('View snag'),
                     ),
                     PopupMenuItem<String>(
-                      value: 'Share project',
-                      child: const Text('Share project'),
+                      value: 'Share snag',
+                      child: const Text('Share snag'),
                     ),
                     PopupMenuItem<String>(
-                      value: 'Edit project',
-                      child: const Text('Edit project'),
+                      value: 'Edit snag',
+                      child: const Text('Edit snag'),
                     ),
                     const PopupMenuDivider(
                       height: 1.0,
                     ),
                     PopupMenuItem<String>(
-                      value: 'Delete project',
-                      child: Text('Delete project', style: TextStyle(color: Colors.red)),
+                      value: 'Delete snag',
+                      child: Text('Delete snag', style: TextStyle(color: Colors.red)),
                     ),
                   ];
                 },

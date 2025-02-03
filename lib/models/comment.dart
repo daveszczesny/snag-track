@@ -3,7 +3,7 @@ import 'package:uuid/uuid.dart';
 
 part 'comment.g.dart';
 
-@HiveType(typeId: 4)
+@HiveType(typeId: 3)
 class Comment extends HiveObject {
   @HiveField(0)
   final String id;

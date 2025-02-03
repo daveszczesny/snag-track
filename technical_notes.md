@@ -1,3 +1,10 @@
+# frequent commands
+
+flutter pub get
+cd ios; pod install
+
+
+
 # Project List View
 
 For incomplete projects

@@ -2,6 +2,7 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:hive/hive.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:snag_application_1/l10n/app_localizations.dart';
 import 'package:snag_application_1/models/snag.dart';
 import 'package:snag_application_1/models/status.dart';
@@ -28,7 +29,7 @@ class Project extends HiveObject {
   List<Snag> snags = [];
 
   @HiveField(5)
-  String? logoImage;
+  XFile? logoImage;
 
   @HiveField(6)
   String? signature; // should this be its own object? or an image
@@ -60,11 +61,18 @@ class Project extends HiveObject {
   @HiveField(15)
   int get totalResolvedSnags => snags.where((snag) => snag.status == Status.resolved).length;
 
+  @HiveField(16)
+  bool get isCompleted => statusCategory == Status.completed;
+
+  @HiveField(17)
+  DateTime? lastModified;
+
   Project({
     String? name,
     String? id,
     String? dateCreated,
     Status? statusCategory,
+    DateTime? lastModified,
     List<Snag>? snags,
     this.logoImage,
     this.signature,
@@ -79,9 +87,15 @@ class Project extends HiveObject {
   : dateCreated = dateCreated ?? DateTime.now().toUtc().toIso8601String(),
     id = id ?? const Uuid().v4(),
     name = name ?? 'Project',
-    statusCategory = statusCategory ?? Status.todo;
+    statusCategory = statusCategory ?? Status.todo,
+    lastModified = lastModified ?? DateTime.now();
 
   void setLocalizedName(BuildContext context) {
     name = AppLocalizations.of(context).translate(name);
+  }
+
+  void updateLastModified() {
+    lastModified = DateTime.now();
+    save();
   }
 }
